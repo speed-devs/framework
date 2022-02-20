@@ -1,0 +1,15 @@
+{
+  "name": "speed-devs/framework",
+  "authors": [
+    {
+      "name": "Alper Dursun",
+      "email": "dursunalper1@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "speedweb\\core\\": "./"
+    }
+  }
+}
