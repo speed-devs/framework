@@ -6,7 +6,9 @@
       "email": "dursunalper1@gmail.com"
     }
   ],
-  "require": {},
+  "require": {
+    "php": "^8.0.2"
+  },
   "autoload": {
     "psr-4": {
       "speedweb\\core\\": "./"
