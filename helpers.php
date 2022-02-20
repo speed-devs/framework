@@ -105,3 +105,12 @@ function form_end(): void
 {
     \speedweb\core\form\Form::end();
 }
+
+/**
+ * @param string $path
+ * @return string
+ */
+function url(string $path): string
+{
+    return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . '/' . $path;
+}
