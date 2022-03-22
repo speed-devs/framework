@@ -2,6 +2,7 @@
 
 namespace speedweb\core;
 
+use Exception;
 use speedweb\core\exception\NotFoundException;
 use speedweb\core\http\Request;
 use speedweb\core\http\Response;
@@ -32,6 +33,7 @@ class Router
 
     /**
      * @throws NotFoundException
+     * @throws Exception
      */
     public function resolve()
     {
@@ -39,7 +41,7 @@ class Router
         $method = $this->request->method();
         $callback = $this->routes[$method][$path] ?? false;
         if (!$callback) {
-            exit('page not found. try create new router.');
+            throw new Exception("Page not found. Try create new router.");
         }
 
         if(is_string($callback)) {

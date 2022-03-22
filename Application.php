@@ -52,7 +52,7 @@ class Application
         try {
             echo $this->router->resolve();
         }catch (Exception $exception) {
-            throw new Exception("page not found!");
+            //@TODO
         }
         $this->triggerEvent(self::EVENT_AFTER_REQUEST);
     }
