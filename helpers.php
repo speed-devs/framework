@@ -88,25 +88,6 @@ function csrf_token(): string
 }
 
 /**
- * @param $action
- * @param $method
- * @param array $options
- * @return \speedweb\core\form\Form
- */
-function form_start($action, $method, $options = []): \speedweb\core\form\Form
-{
-    return \speedweb\core\form\Form::begin($action, $method, $options);
-}
-
-/**
- * @return void
- */
-function form_end(): void
-{
-    \speedweb\core\form\Form::end();
-}
-
-/**
  * @param string $path
  * @return string
  */

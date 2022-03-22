@@ -2,6 +2,7 @@
 
 namespace speedweb\core\http;
 
+use Exception;
 use speedweb\core\Application;
 use speedweb\core\exception\CsrfNotFoundException;
 use speedweb\core\form\csrf\CsrfManager;
@@ -12,6 +13,9 @@ class Request
 
     public SessionManager $sessionManager;
 
+    /**
+     * @throws Exception
+     */
     public function __construct(SessionManager $sessionManager)
     {
         $this->sessionManager = $sessionManager;
@@ -25,11 +29,11 @@ class Request
             }
 
             if(!$searchCsrf) {
-                exit('csrf token not found. try add csrf token to form');
+                throw new Exception("csrf token not found. try add csrf token to form");
             }
 
             if($this->sessionManager->get(Application::CSRF_SESSION_NAMESPACE) !== $_POST[Application::CSRF_SESSION_NAMESPACE]) {
-                exit('csrf token not match.');
+                throw new Exception("csrf token not match.");
             }
 
             $this->sessionManager->remove(Application::CSRF_SESSION_NAMESPACE);

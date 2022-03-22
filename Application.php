@@ -2,6 +2,7 @@
 
 namespace speedweb\core;
 
+use Exception;
 use speedweb\core\form\csrf\CsrfManager;
 use speedweb\core\http\Request;
 use speedweb\core\http\Response;
@@ -42,13 +43,16 @@ class Application
         $this->router = new Router($this->request, $this->response);
     }
 
+    /**
+     * @throws Exception
+     */
     public function run()
     {
         $this->triggerEvent(self::EVENT_BEFORE_REQUEST);
         try {
             echo $this->router->resolve();
-        }catch (\Exception $exception) {
-            //@todo: create modern error page
+        }catch (Exception $exception) {
+            throw new Exception("page not found!");
         }
         $this->triggerEvent(self::EVENT_AFTER_REQUEST);
     }
