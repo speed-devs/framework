@@ -3,6 +3,7 @@
 namespace speedweb\core;
 
 use Exception;
+use Spatie\Ignition\Ignition;
 use speedweb\core\form\csrf\CsrfManager;
 use speedweb\core\http\Request;
 use speedweb\core\http\Response;
@@ -28,6 +29,8 @@ class Application
 
     public function __construct($rootPath, array $config)
     {
+        Ignition::make()->register();
+
         self::$ROOT_DIR = $rootPath;
         self::$application = $this;
 
